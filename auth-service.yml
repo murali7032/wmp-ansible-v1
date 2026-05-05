@@ -42,6 +42,9 @@
         recurse: yes
         mode: 'o-rwx'
 
+    - name: run command
+      ansible.builtin.shell: chcon -t bin_t /app/auth-service
+      
     - name: Start auth-service
       ansible.builtin.systemd_service:
         name: auth-service
