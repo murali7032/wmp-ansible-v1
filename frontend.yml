@@ -33,6 +33,14 @@
       args:
         chdir: /usr/share/nginx/
 
+    - name: Change ownership of frontend files
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        owner: nginx
+        group: nginx
+        recurse: yes
+
+
     - name: Start nginx service
       ansible.builtin.systemd_service:
         name: nginx
